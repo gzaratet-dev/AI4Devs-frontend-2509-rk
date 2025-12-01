@@ -62,7 +62,7 @@
     {
       "id": "phase-3",
       "name": "Tarjetas de Candidatos",
-      "status": "pending",
+      "status": "completed",
       "objectives": [
         "Crear componente CandidateCard",
         "Mostrar nombre completo y puntuación media",

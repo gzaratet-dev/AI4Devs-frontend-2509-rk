@@ -1,8 +1,8 @@
 {
   "updatedAt": "2024-12-19T00:00:00.000Z",
   "currentPhase": {
-    "id": "phase-2",
-    "name": "Columnas del Proceso",
+    "id": "phase-3",
+    "name": "Tarjetas de Candidatos",
     "status": "completed",
     "progress": 100,
     "startedAt": "2024-12-19T00:00:00.000Z",
@@ -10,8 +10,8 @@
     "currentTask": null
   },
   "nextPhase": {
-    "id": "phase-3",
-    "name": "Tarjetas de Candidatos"
+    "id": "v2",
+    "name": "Integración con API Real y Drag-and-Drop"
   },
   "blockers": []
 }

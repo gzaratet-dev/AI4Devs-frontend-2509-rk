@@ -154,6 +154,46 @@
       "outcome": "KanbanBoard integrado con datos mockeados de interviewSteps",
       "validated": true,
       "notes": "4 columnas mockeadas: Initial Screening, Technical Interview, Manager Interview, Final Review"
+    },
+    {
+      "id": "task-3-1",
+      "phase": "phase-3",
+      "description": "Crear componente CandidateCard",
+      "completedAt": "2024-12-19T00:00:00.000Z",
+      "filesModified": ["src/components/CandidateCard.tsx"],
+      "outcome": "Componente CandidateCard creado con nombre y puntuación",
+      "validated": true,
+      "notes": "Componente Card de Bootstrap con badge de puntuación con colores según score (verde >=4, amarillo >=2, rojo <2)"
+    },
+    {
+      "id": "task-3-2",
+      "phase": "phase-3",
+      "description": "Integrar CandidateCard en KanbanColumn",
+      "completedAt": "2024-12-19T00:00:00.000Z",
+      "filesModified": ["src/components/KanbanBoard.tsx"],
+      "outcome": "CandidateCard renderizado en cada columna según candidatos",
+      "validated": true,
+      "notes": "KanbanBoard ahora filtra y renderiza CandidateCard para cada candidato en su fase correspondiente"
+    },
+    {
+      "id": "task-3-3",
+      "phase": "phase-3",
+      "description": "Implementar lógica de posicionamiento de candidatos por fase",
+      "completedAt": "2024-12-19T00:00:00.000Z",
+      "filesModified": ["src/components/KanbanBoard.tsx"],
+      "outcome": "Lógica de distribución de candidatos por fase implementada",
+      "validated": true,
+      "notes": "Función getCandidatesForStep filtra candidatos por currentInterviewStep y los distribuye en columnas correctas"
+    },
+    {
+      "id": "task-3-4",
+      "phase": "phase-3",
+      "description": "Crear datos mockeados completos",
+      "completedAt": "2024-12-19T00:00:00.000Z",
+      "filesModified": ["src/components/PositionDetail.tsx"],
+      "outcome": "Datos mockeados completos de candidatos añadidos",
+      "validated": true,
+      "notes": "7 candidatos mockeados distribuidos en diferentes fases: Initial Screening (2), Technical Interview (3), Manager Interview (1), Final Review (1)"
     }
   ]
 }

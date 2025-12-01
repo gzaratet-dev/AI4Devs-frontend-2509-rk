@@ -1,0 +1,89 @@
+{
+  "createdAt": "2024-12-19T00:00:00.000Z",
+  "phase": {
+    "id": "phase-3",
+    "name": "Tarjetas de Candidatos",
+    "status": "completed"
+  },
+  "tasks": [
+    {
+      "id": "task-3-1",
+      "description": "Crear componente CandidateCard",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/CandidateCard.tsx",
+          "action": "create",
+          "reason": "Componente para mostrar tarjeta de candidato con nombre y puntuación"
+        }
+      ],
+      "mockData": {
+        "required": true,
+        "structure": {
+          "fullName": "string",
+          "averageScore": "number",
+          "currentInterviewStep": "string"
+        }
+      }
+    },
+    {
+      "id": "task-3-2",
+      "description": "Integrar CandidateCard en KanbanColumn",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/KanbanColumn.tsx",
+          "action": "modify",
+          "reason": "Renderizar CandidateCard para cada candidato en la columna"
+        }
+      ]
+    },
+    {
+      "id": "task-3-3",
+      "description": "Implementar lógica de posicionamiento de candidatos por fase",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/KanbanBoard.tsx",
+          "action": "modify",
+          "reason": "Filtrar y distribuir candidatos en columnas según currentInterviewStep"
+        }
+      ]
+    },
+    {
+      "id": "task-3-4",
+      "description": "Crear datos mockeados completos",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/PositionDetail.tsx",
+          "action": "modify",
+          "reason": "Añadir datos mockeados de interviewFlow y candidates"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "criteria": [
+      "¿Es visualizable?",
+      "¿Las tarjetas muestran nombre y puntuación?",
+      "¿Los candidatos están en la columna correcta?",
+      "¿Sigue el patrón de Positions.tsx?"
+    ],
+    "checklist": [
+      {
+        "item": "¿Es visualizable?",
+        "status": "pass"
+      },
+      {
+        "item": "¿Tarjetas muestran información correcta?",
+        "status": "pass"
+      },
+      {
+        "item": "¿Candidatos en fase correcta?",
+        "status": "pass"
+      }
+    ]
+  }
+}
+
