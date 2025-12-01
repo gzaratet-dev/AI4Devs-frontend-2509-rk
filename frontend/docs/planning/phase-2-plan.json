@@ -1,0 +1,87 @@
+{
+  "createdAt": "2024-12-19T00:00:00.000Z",
+  "phase": {
+    "id": "phase-2",
+    "name": "Columnas del Proceso",
+    "status": "completed"
+  },
+  "tasks": [
+    {
+      "id": "task-2-1",
+      "description": "Crear componente KanbanBoard",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/KanbanBoard.tsx",
+          "action": "create",
+          "reason": "Componente principal del tablero Kanban"
+        }
+      ],
+      "mockData": {
+        "required": true,
+        "structure": {
+          "interviewSteps": "array de objetos con { id, name, orderIndex }"
+        }
+      }
+    },
+    {
+      "id": "task-2-2",
+      "description": "Crear componente KanbanColumn",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/KanbanColumn.tsx",
+          "action": "create",
+          "reason": "Componente para cada columna del Kanban"
+        }
+      ]
+    },
+    {
+      "id": "task-2-3",
+      "description": "Implementar layout responsive con Bootstrap",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/KanbanBoard.tsx",
+          "action": "modify",
+          "reason": "Añadir clases Bootstrap para responsive (Row/Col horizontal en desktop, vertical en móvil)"
+        }
+      ]
+    },
+    {
+      "id": "task-2-4",
+      "description": "Integrar KanbanBoard en PositionDetail",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/PositionDetail.tsx",
+          "action": "modify",
+          "reason": "Incluir KanbanBoard después del header"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "criteria": [
+      "¿Es visualizable?",
+      "¿Es responsive (columnas verticales en móvil)?",
+      "¿Se muestran todas las columnas?",
+      "¿Sigue el patrón de Positions.tsx?"
+    ],
+    "checklist": [
+      {
+        "item": "¿Es visualizable?",
+        "status": "pass"
+      },
+      {
+        "item": "¿Es responsive?",
+        "status": "pass"
+      },
+      {
+        "item": "¿Columnas se renderizan correctamente?",
+        "status": "pass"
+      }
+    ]
+  }
+}
+
