@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2024-12-19T00:00:00.000Z",
+  "updatedAt": "2025-12-01T00:00:00.000Z",
   "decisions": [
     {
       "id": "ad-001",
-      "date": "2024-12-19T00:00:00.000Z",
+      "date": "2025-12-01T00:00:00.000Z",
       "title": "Replicar patrones de Positions.tsx",
       "context": "Necesidad de mantener consistencia en el proyecto",
       "decision": "Usar los mismos patrones que Positions.tsx: componentes funcionales, React Bootstrap, TypeScript cuando sea posible",
@@ -13,7 +13,7 @@
     },
     {
       "id": "ad-002",
-      "date": "2024-12-19T00:00:00.000Z",
+      "date": "2025-12-01T00:00:00.000Z",
       "title": "Usar datos mockeados en v1",
       "context": "Fase 0-3 son para implementación con datos mockeados",
       "decision": "Implementar componentes con datos mockeados antes de integrar API real",
@@ -23,7 +23,7 @@
     },
     {
       "id": "ad-003",
-      "date": "2024-12-19T00:00:00.000Z",
+      "date": "2025-12-01T00:00:00.000Z",
       "title": "Estructura de componentes para Kanban",
       "context": "Necesidad de crear componentes modulares y reutilizables",
       "decision": "Crear componentes separados: PositionHeader, KanbanBoard, KanbanColumn, CandidateCard",

@@ -1,7 +1,7 @@
 {
   "project": "Position Detail View (Kanban)",
   "version": "1.0.0",
-  "createdAt": "2024-12-19T00:00:00.000Z",
+  "createdAt": "2025-12-01T00:00:00.000Z",
   "sourceDocument": "@frontend/docs/requirement.md",
   "currentState": {
     "description": "Sistema LTI con funcionalidad para listar posiciones",

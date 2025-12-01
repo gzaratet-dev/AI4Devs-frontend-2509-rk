@@ -1,5 +1,5 @@
 {
-  "validatedAt": "2024-12-19T00:00:00.000Z",
+  "validatedAt": "2025-12-01T00:00:00.000Z",
   "sources": {
     "requirements": "@frontend/docs/requirements.json",
     "apiSpec": "@backend/api-spec.yaml",
