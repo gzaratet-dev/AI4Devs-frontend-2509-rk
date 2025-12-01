@@ -21,6 +21,15 @@ type Candidate = {
     averageScore: number;
 };
 
+type InterviewFlowData = {
+    positionName: string;
+    interviewFlow: {
+        id: number;
+        description: string;
+        interviewSteps: InterviewStep[];
+    };
+};
+
 const PositionDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [positionName, setPositionName] = useState<string>('');
@@ -45,9 +54,13 @@ const PositionDetail: React.FC = () => {
                     getCandidatesByPosition(positionId)
                 ]);
 
-                setPositionName(interviewFlowData.positionName);
-                setInterviewSteps(interviewFlowData.interviewFlow.interviewSteps);
-                setCandidates(candidatesData);
+                // Añadir tipos explícitos para TypeScript
+                const typedInterviewFlowData = interviewFlowData as InterviewFlowData;
+                const typedCandidatesData = candidatesData as Candidate[];
+
+                setPositionName(typedInterviewFlowData.positionName);
+                setInterviewSteps(typedInterviewFlowData.interviewFlow.interviewSteps);
+                setCandidates(typedCandidatesData);
             } catch (err) {
                 const errorMessage = err instanceof Error ? err.message : 'Error desconocido al cargar los datos';
                 setError(errorMessage);

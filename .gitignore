@@ -99,6 +99,9 @@ Thumbs.db
 **/*.backup
 **/*.old
 
+# PR and documentation files (temporary)
+PR_DESCRIPTION.md
+
 # Security and Setup directories - may contain sensitive information
 SECURITY/
 SETUP/
