@@ -1,0 +1,40 @@
+{
+  "analyzedAt": "2024-12-19T00:00:00.000Z",
+  "view": "positions",
+  "files": [
+    {
+      "path": "src/components/Positions.tsx",
+      "type": "component",
+      "purpose": "Vista principal de listado de posiciones con filtros y tarjetas",
+      "exports": ["default Positions"],
+      "imports": ["react", "react-bootstrap (Card, Container, Row, Col, Form, Button)"]
+    }
+  ],
+  "patterns": {
+    "stateManagement": "Estado local con useState (no se usa en Positions actualmente, pero se usa en otros componentes como AddCandidateForm)",
+    "dataFetching": "Datos mockeados definidos directamente en el componente (mockPositions array)",
+    "styling": "React Bootstrap para componentes UI, clases de Bootstrap para layout y estilos",
+    "routing": "React Router v6 con BrowserRouter, Routes y Route. Rutas definidas en App.js"
+  },
+  "mockData": {
+    "location": "Definido directamente en el componente Positions.tsx como constante mockPositions",
+    "structure": {
+      "type": "array de objetos Position",
+      "fields": {
+        "title": "string",
+        "manager": "string",
+        "deadline": "string",
+        "status": "'Abierto' | 'Contratado' | 'Cerrado' | 'Borrador'"
+      }
+    }
+  },
+  "recommendations": [
+    "Replicar estructura de componente funcional con TypeScript",
+    "Usar React Bootstrap para componentes UI (Card, Container, Row, Col)",
+    "Definir tipos TypeScript para datos (similar a type Position)",
+    "Usar datos mockeados inicialmente antes de integrar API",
+    "Mantener estructura de layout con Container y Row/Col de Bootstrap",
+    "Usar routing de React Router para navegación entre vistas"
+  ]
+}
+

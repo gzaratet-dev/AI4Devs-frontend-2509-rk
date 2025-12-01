@@ -1,0 +1,96 @@
+{
+  "createdAt": "2024-12-19T00:00:00.000Z",
+  "updatedAt": "2024-12-19T00:00:00.000Z",
+  "project": "Position Detail View (Kanban)",
+  "version": "1.0.0",
+  "phases": [
+    {
+      "id": "phase-0",
+      "name": "Análisis y Validación de API",
+      "status": "completed",
+      "objectives": [
+        "Transcribir requirements.md a requirements.json",
+        "Validar endpoints contra api-spec.yaml",
+        "Validar endpoints contra implementación real",
+        "Actualizar api-spec.yaml",
+        "Documentar inconsistencias"
+      ],
+      "deliverables": [
+        "requirements.json",
+        "api-validation.json",
+        "api-spec.yaml actualizado"
+      ],
+      "estimatedComplexity": "medium",
+      "dependencies": []
+    },
+    {
+      "id": "phase-1",
+      "name": "Encabezado de la posición",
+      "status": "completed",
+      "objectives": [
+        "Crear componente PositionHeader",
+        "Mostrar título de la posición",
+        "Añadir botón/flecha de retorno a positions",
+        "Integrar con routing de React Router"
+      ],
+      "deliverables": [
+        "Componente PositionHeader",
+        "Ruta /position/:id configurada",
+        "Navegación funcional"
+      ],
+      "estimatedComplexity": "low",
+      "dependencies": ["phase-0"]
+    },
+    {
+      "id": "phase-2",
+      "name": "Columnas del Proceso",
+      "status": "completed",
+      "objectives": [
+        "Crear componente KanbanBoard",
+        "Renderizar columnas por cada fase del proceso",
+        "Implementar layout responsive (horizontal desktop, vertical móvil)",
+        "Integrar datos mockeados de fases"
+      ],
+      "deliverables": [
+        "Componente KanbanBoard",
+        "Layout responsive funcional",
+        "Columnas renderizadas correctamente"
+      ],
+      "estimatedComplexity": "medium",
+      "dependencies": ["phase-1"]
+    },
+    {
+      "id": "phase-3",
+      "name": "Tarjetas de Candidatos",
+      "status": "pending",
+      "objectives": [
+        "Crear componente CandidateCard",
+        "Mostrar nombre completo y puntuación media",
+        "Posicionar candidatos en fase correcta",
+        "Integrar datos mockeados de candidatos"
+      ],
+      "deliverables": [
+        "Componente CandidateCard",
+        "Candidatos mostrados en columnas correctas",
+        "Datos mockeados integrados"
+      ],
+      "estimatedComplexity": "medium",
+      "dependencies": ["phase-2"]
+    }
+  ],
+  "technicalStack": {
+    "framework": "React",
+    "libraries": [
+      "react-router-dom",
+      "react-bootstrap",
+      "bootstrap"
+    ],
+    "patterns": [
+      "Componentes funcionales",
+      "TypeScript para nuevos componentes",
+      "React Bootstrap para UI",
+      "Datos mockeados inicialmente"
+    ]
+  }
+}
+

@@ -1,0 +1,32 @@
+{
+  "analyzedAt": "2024-12-19T00:00:00.000Z",
+  "patterns": {
+    "components": {
+      "structure": "Componentes funcionales (no clases), definidos como funciones o arrow functions",
+      "naming": "PascalCase para nombres de componentes (Positions, RecruiterDashboard, AddCandidateForm)",
+      "props": "Props tipadas con TypeScript cuando se usa .tsx, o sin tipar en .js",
+      "exports": "Export default para componentes principales"
+    },
+    "hooks": {
+      "custom": [],
+      "usage": "useState para estado local, hooks de React Router (Link, useNavigate probablemente)"
+    },
+    "styling": {
+      "approach": "React Bootstrap + CSS de Bootstrap",
+      "conventions": "Uso de componentes de react-bootstrap (Card, Container, Row, Col, Form, Button), clases de Bootstrap para estilos adicionales"
+    },
+    "routing": {
+      "library": "react-router-dom v6",
+      "pattern": "BrowserRouter en App.js, Routes y Route para definir rutas, Link para navegación"
+    },
+    "dataManagement": {
+      "approach": "Datos mockeados en componentes, servicios separados para llamadas API",
+      "services": "Servicios en src/services/ para comunicación con backend"
+    },
+    "typescript": {
+      "usage": "Mixto: algunos archivos .tsx (Positions, index.tsx) y otros .js (App.js, AddCandidateForm.js)",
+      "pattern": "TypeScript para nuevos componentes cuando es posible"
+    }
+  }
+}
+

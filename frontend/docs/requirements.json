@@ -1,0 +1,142 @@
+{
+  "project": "Position Detail View (Kanban)",
+  "version": "1.0.0",
+  "createdAt": "2024-12-19T00:00:00.000Z",
+  "sourceDocument": "@frontend/docs/requirement.md",
+  "currentState": {
+    "description": "Sistema LTI con funcionalidad para listar posiciones",
+    "features": [
+      "Lista de tarjetas de posiciones",
+      "Filtros por texto, fecha límite, estado y manager"
+    ],
+    "screenshotPath": "@frontend/docs/current-state.png"
+  },
+  "objective": {
+    "main": "Crear interfaz 'position' para visualizar y gestionar candidatos de una posición específica",
+    "interface": "Kanban con drag-and-drop",
+    "functionality": "Mover candidatos entre fases arrastrando tarjetas"
+  },
+  "designRequirements": [
+    {
+      "id": "DR-001",
+      "description": "Mostrar título de la posición en la parte superior",
+      "priority": "high",
+      "component": "Header"
+    },
+    {
+      "id": "DR-002",
+      "description": "Añadir flecha a la izquierda del título para volver al listado",
+      "priority": "high",
+      "component": "Header"
+    },
+    {
+      "id": "DR-003",
+      "description": "Mostrar tantas columnas como fases haya en el proceso",
+      "priority": "high",
+      "component": "Kanban Board"
+    },
+    {
+      "id": "DR-004",
+      "description": "Tarjeta de candidato con nombre completo y puntuación media",
+      "priority": "high",
+      "component": "Candidate Card"
+    },
+    {
+      "id": "DR-005",
+      "description": "Diseño responsive (columnas verticales en móvil)",
+      "priority": "medium",
+      "component": "Layout"
+    }
+  ],
+  "assumptions": [
+    "La página de posiciones ya existe",
+    "Existe estructura global (menú superior y footer)",
+    "Solo crear contenido interno de la página"
+  ],
+  "apiEndpoints": [
+    {
+      "id": "API-001",
+      "method": "GET",
+      "path": "/position/:id/interviewflow",
+      "description": "Devuelve información sobre el proceso de contratación. NOTA: La respuesta está envuelta en { interviewFlow: {...} }",
+      "responseFields": {
+        "positionName": "string - Título de la posición",
+        "interviewFlow": {
+          "id": "number",
+          "description": "string",
+          "interviewSteps": "array - Fases del proceso"
+        }
+      },
+      "exampleResponse": {
+        "interviewFlow": {
+          "positionName": "Senior backend engineer",
+          "interviewFlow": {
+            "id": 1,
+            "description": "Standard development interview process",
+            "interviewSteps": [
+              {
+                "id": 1,
+                "interviewFlowId": 1,
+                "interviewTypeId": 1,
+                "name": "Initial Screening",
+                "orderIndex": 1
+              }
+            ]
+          }
+        }
+      },
+      "note": "La respuesta real del backend envuelve el objeto en { interviewFlow: {...} }. El servicio devuelve { positionName, interviewFlow } pero el controlador lo envuelve."
+    },
+    {
+      "id": "API-002",
+      "method": "GET",
+      "path": "/position/:id/candidates",
+      "description": "Devuelve todos los candidatos en proceso para una posición",
+      "responseFields": {
+        "fullName": "string - Nombre completo del candidato",
+        "currentInterviewStep": "string - Fase actual del candidato",
+        "averageScore": "number - Puntuación media",
+        "id": "number - ID del candidato (campo adicional del backend)",
+        "applicationId": "number - ID de la aplicación (campo adicional del backend)"
+      },
+      "exampleResponse": [
+        {
+          "fullName": "Jane Smith",
+          "currentInterviewStep": "Technical Interview",
+          "averageScore": 4
+        }
+      ]
+    },
+    {
+      "id": "API-003",
+      "method": "PUT",
+      "path": "/candidates/:id",
+      "description": "Actualiza la etapa del candidato. NOTA: El path es /candidates/:id (sin /stage)",
+      "requestBody": {
+        "applicationId": "number - ID de la aplicación",
+        "currentInterviewStep": "number - ID del interview_step"
+      },
+      "exampleRequest": {
+        "applicationId": 1,
+        "currentInterviewStep": 3
+      },
+      "exampleResponse": {
+        "message": "Candidate stage updated successfully",
+        "data": {
+          "id": 1,
+          "positionId": 1,
+          "candidateId": 1,
+          "applicationDate": "2024-06-04T13:34:58.304Z",
+          "currentInterviewStep": 3,
+          "notes": null,
+          "interviews": []
+        }
+      }
+    }
+  ],
+  "referenceImages": {
+    "currentState": "@frontend/docs/current-state.png",
+    "proposedDesign": "@frontend/docs/proposed-design.png"
+  }
+}
+

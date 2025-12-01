@@ -1,0 +1,57 @@
+{
+  "updatedAt": "2024-12-19T00:00:00.000Z",
+  "decisions": [
+    {
+      "id": "td-001",
+      "date": "2024-12-19T00:00:00.000Z",
+      "title": "Formato JSON para documentación frontend",
+      "context": "Necesidad de documentación estructurada y procesable",
+      "decision": "Usar JSON para toda la documentación del frontend",
+      "alternatives": ["Markdown", "YAML"],
+      "consequences": "Mayor facilidad para procesamiento automático, validación de estructura, y consistencia",
+      "status": "accepted"
+    },
+    {
+      "id": "td-002",
+      "date": "2024-12-19T00:00:00.000Z",
+      "title": "Mantener api-spec.yaml en backend",
+      "context": "Backend usa estándar OpenAPI",
+      "decision": "Mantener api-spec.yaml en formato YAML en backend",
+      "alternatives": ["Convertir a JSON"],
+      "consequences": "Seguir estándar de la industria para especificaciones API, compatibilidad con herramientas OpenAPI",
+      "status": "accepted"
+    },
+    {
+      "id": "td-003",
+      "date": "2024-12-19T00:00:00.000Z",
+      "title": "No modificar backend excepto api-spec.yaml",
+      "context": "Restricción del prompt: solo actualizar documentación, no código del backend",
+      "decision": "Documentar inconsistencias en api-validation.json pero no corregir código del backend",
+      "alternatives": ["Corregir controlador getInterviewFlowByPosition para devolver estructura correcta"],
+      "consequences": "El frontend deberá adaptarse a la estructura real del backend (respuesta envuelta en { interviewFlow })",
+      "status": "accepted"
+    },
+    {
+      "id": "td-004",
+      "date": "2024-12-19T00:00:00.000Z",
+      "title": "Usar paths reales del backend en requirements.json",
+      "context": "Inconsistencias encontradas entre requirements y backend real",
+      "decision": "Actualizar requirements.json para usar paths reales (/position en lugar de /positions)",
+      "alternatives": ["Mantener paths de requirements y actualizar backend"],
+      "consequences": "Frontend usará paths correctos desde el inicio, evitando errores de integración",
+      "status": "pending",
+      "notes": "Esta decisión se implementará al actualizar requirements.json"
+    },
+    {
+      "id": "td-005",
+      "date": "2024-12-19T00:00:00.000Z",
+      "title": "Incluir campos adicionales en respuesta de candidatos",
+      "context": "Backend devuelve id y applicationId además de los campos documentados",
+      "decision": "Documentar campos adicionales en api-spec.yaml ya que son útiles para el frontend",
+      "alternatives": ["Remover campos del backend", "Ignorar campos en frontend"],
+      "consequences": "Frontend tendrá acceso a id y applicationId necesarios para operaciones como actualizar etapa",
+      "status": "accepted"
+    }
+  ]
+}
+

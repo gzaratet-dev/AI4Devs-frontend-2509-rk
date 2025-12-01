@@ -1,0 +1,157 @@
+{
+  "validatedAt": "2024-12-19T00:00:00.000Z",
+  "sources": {
+    "requirements": "@frontend/docs/requirements.json",
+    "apiSpec": "@backend/api-spec.yaml",
+    "implementation": "@backend/src/**/*"
+  },
+  "endpoints": [
+    {
+      "id": "API-001",
+      "path": "/positions/:id/interviewFlow",
+      "method": "GET",
+      "status": "inconsistent",
+      "inconsistencies": [
+        {
+          "type": "path",
+          "severity": "critical",
+          "description": "Path en requirements usa '/positions/:id/interviewFlow' pero implementación usa '/position/:id/interviewflow' (sin 's' y lowercase)",
+          "requiredIn": "requirements",
+          "specifiedIn": "api-spec.yaml - No encontrado",
+          "implementedIn": "backend/src/routes/positionRoutes.ts línea 7: router.get('/:id/interviewflow', ...)",
+          "recommendation": "Actualizar requirements.json para usar '/position/:id/interviewflow' o actualizar backend para usar '/positions/:id/interviewFlow'"
+        },
+        {
+          "type": "response_schema",
+          "severity": "high",
+          "description": "La respuesta del backend envuelve el objeto en { interviewFlow: {...} } pero requirements espera directamente { positionName, interviewFlow }",
+          "requiredIn": "requirements - espera { positionName, interviewFlow }",
+          "specifiedIn": "api-spec.yaml - No especificado",
+          "implementedIn": "backend/src/presentation/controllers/positionController.ts línea 22: res.status(200).json({ interviewFlow })",
+          "recommendation": "El backend devuelve { interviewFlow: {...} } pero el servicio devuelve { positionName, interviewFlow }. El controlador envuelve incorrectamente. Debe devolver directamente el resultado del servicio."
+        }
+      ],
+      "validationDetails": {
+        "pathExists": true,
+        "methodMatches": true,
+        "responseSchemaMatches": false,
+        "parametersMatch": true
+      },
+      "actualImplementation": {
+        "path": "/position/:id/interviewflow",
+        "controller": "getInterviewFlowByPosition",
+        "service": "getInterviewFlowByPositionService",
+        "responseStructure": {
+          "backendController": "{ interviewFlow: { positionName, interviewFlow: {...} } }",
+          "backendService": "{ positionName, interviewFlow: {...} }",
+          "requirements": "{ positionName, interviewFlow: {...} }"
+        }
+      }
+    },
+    {
+      "id": "API-002",
+      "path": "/positions/:id/candidates",
+      "method": "GET",
+      "status": "inconsistent",
+      "inconsistencies": [
+        {
+          "type": "path",
+          "severity": "critical",
+          "description": "Path en requirements usa '/positions/:id/candidates' pero implementación usa '/position/:id/candidates' (sin 's')",
+          "requiredIn": "requirements",
+          "specifiedIn": "api-spec.yaml línea 188: /position/{id}/candidates",
+          "implementedIn": "backend/src/routes/positionRoutes.ts línea 6: router.get('/:id/candidates', ...)",
+          "recommendation": "Actualizar requirements.json para usar '/position/:id/candidates' para coincidir con api-spec.yaml e implementación"
+        },
+        {
+          "type": "response_schema",
+          "severity": "medium",
+          "description": "La respuesta del backend incluye campos adicionales (id, applicationId) que no están documentados en requirements",
+          "requiredIn": "requirements - solo fullName, currentInterviewStep, averageScore",
+          "specifiedIn": "api-spec.yaml - solo fullName, currentInterviewStep, averageScore",
+          "implementedIn": "backend/src/application/services/positionService.ts líneas 23-29: incluye id y applicationId",
+          "recommendation": "Los campos adicionales (id, applicationId) son útiles para el frontend. Actualizar requirements.json y api-spec.yaml para incluirlos, o removerlos del backend si no son necesarios"
+        }
+      ],
+      "validationDetails": {
+        "pathExists": true,
+        "methodMatches": true,
+        "responseSchemaMatches": false,
+        "parametersMatch": true
+      },
+      "actualImplementation": {
+        "path": "/position/:id/candidates",
+        "controller": "getCandidatesByPosition",
+        "service": "getCandidatesByPositionService",
+        "responseStructure": {
+          "backend": "[{ fullName, currentInterviewStep, averageScore, id, applicationId }]",
+          "requirements": "[{ fullName, currentInterviewStep, averageScore }]",
+          "apiSpec": "[{ fullName, currentInterviewStep, averageScore }]"
+        }
+      }
+    },
+    {
+      "id": "API-003",
+      "path": "/candidates/:id/stage",
+      "method": "PUT",
+      "status": "inconsistent",
+      "inconsistencies": [
+        {
+          "type": "path",
+          "severity": "critical",
+          "description": "Path en requirements usa '/candidates/:id/stage' pero implementación usa '/candidates/:id' (sin /stage)",
+          "requiredIn": "requirements",
+          "specifiedIn": "api-spec.yaml línea 219: /candidates/{id}",
+          "implementedIn": "backend/src/routes/candidateRoutes.ts línea 22: router.put('/:id', ...)",
+          "recommendation": "Actualizar requirements.json para usar '/candidates/:id' para coincidir con api-spec.yaml e implementación"
+        },
+        {
+          "type": "parameters",
+          "severity": "high",
+          "description": "En requirements, applicationId y currentInterviewStep son strings, pero en backend son números (integers)",
+          "requiredIn": "requirements - strings: 'applicationId': '1', 'currentInterviewStep': '3'",
+          "specifiedIn": "api-spec.yaml línea 237-242: applicationId y currentInterviewStep son integers",
+          "implementedIn": "backend/src/presentation/controllers/candidateController.ts líneas 38-45: parseInt() para ambos campos",
+          "recommendation": "Actualizar requirements.json para especificar que applicationId y currentInterviewStep son números (integers), no strings"
+        }
+      ],
+      "validationDetails": {
+        "pathExists": true,
+        "methodMatches": true,
+        "responseSchemaMatches": true,
+        "parametersMatch": false
+      },
+      "actualImplementation": {
+        "path": "/candidates/:id",
+        "controller": "updateCandidateStageController",
+        "service": "updateCandidateStage",
+        "requestBodyStructure": {
+          "backend": "{ applicationId: number, currentInterviewStep: number }",
+          "requirements": "{ applicationId: string, currentInterviewStep: string }",
+          "apiSpec": "{ applicationId: integer, currentInterviewStep: integer }"
+        }
+      }
+    }
+  ],
+  "summary": {
+    "totalEndpoints": 3,
+    "validated": 0,
+    "inconsistent": 3,
+    "missing": 0,
+    "deprecated": 0
+  },
+  "recommendations": [
+    "Actualizar api-spec.yaml para incluir endpoint GET /position/:id/interviewflow",
+    "Corregir controlador getInterviewFlowByPosition para devolver directamente el resultado del servicio (sin envolver en { interviewFlow })",
+    "Actualizar api-spec.yaml para incluir campos id y applicationId en respuesta de GET /position/:id/candidates si son necesarios",
+    "Actualizar requirements.json para reflejar paths reales del backend (/position en lugar de /positions, /candidates/:id en lugar de /candidates/:id/stage)",
+    "Actualizar requirements.json para especificar que applicationId y currentInterviewStep son números, no strings"
+  ],
+  "nextSteps": [
+    "Actualizar api-spec.yaml con endpoint GET /position/:id/interviewflow",
+    "Corregir controlador backend para devolver estructura correcta",
+    "Actualizar requirements.json con paths y tipos correctos",
+    "Decidir si incluir campos adicionales (id, applicationId) en documentación o removerlos del backend"
+  ]
+}
+

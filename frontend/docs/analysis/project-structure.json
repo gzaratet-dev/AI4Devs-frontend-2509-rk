@@ -1,0 +1,47 @@
+{
+  "analyzedAt": "2024-12-19T00:00:00.000Z",
+  "structure": {
+    "mainDirectories": [
+      "src",
+      "src/components",
+      "src/config",
+      "src/services",
+      "src/assets",
+      "public",
+      "docs"
+    ],
+    "keyFiles": [
+      {
+        "path": "src/App.js",
+        "purpose": "Componente principal de la aplicación con configuración de rutas",
+        "dependencies": ["react", "react-router-dom", "bootstrap", "components/RecruiterDashboard", "components/AddCandidateForm", "components/Positions"]
+      },
+      {
+        "path": "src/index.tsx",
+        "purpose": "Punto de entrada de la aplicación React",
+        "dependencies": ["react", "react-dom/client"]
+      },
+      {
+        "path": "src/components/Positions.tsx",
+        "purpose": "Vista de listado de posiciones con filtros y tarjetas",
+        "dependencies": ["react", "react-bootstrap"]
+      },
+      {
+        "path": "src/config/api.js",
+        "purpose": "Configuración de URL base de la API",
+        "dependencies": []
+      },
+      {
+        "path": "src/services/candidateService.js",
+        "purpose": "Servicio para comunicación con API de candidatos",
+        "dependencies": ["config/api"]
+      }
+    ],
+    "conventions": {
+      "naming": "PascalCase para componentes React, camelCase para funciones y variables",
+      "fileStructure": "Componentes en src/components/, servicios en src/services/, configuración en src/config/",
+      "componentPattern": "Componentes funcionales con TypeScript o JavaScript, uso de React Bootstrap para UI"
+    }
+  }
+}
+

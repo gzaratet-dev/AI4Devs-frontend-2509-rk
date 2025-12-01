@@ -1,0 +1,117 @@
+{
+  "createdAt": "2024-12-19T00:00:00.000Z",
+  "phase": {
+    "id": "phase-0",
+    "name": "Análisis y Validación de API",
+    "status": "completed"
+  },
+  "tasks": [
+    {
+      "id": "task-0-1",
+      "description": "Transcribir requirement.md a requirements.json",
+      "status": "completed",
+      "files": [
+        {
+          "path": "@frontend/docs/requirements.json",
+          "action": "create",
+          "reason": "Centralizar requisitos en formato JSON estructurado"
+        }
+      ]
+    },
+    {
+      "id": "task-0-2",
+      "description": "Analizar @backend/api-spec.yaml",
+      "status": "completed",
+      "files": [
+        {
+          "path": "@backend/api-spec.yaml",
+          "action": "analyze",
+          "reason": "Verificar especificación actual de la API"
+        }
+      ]
+    },
+    {
+      "id": "task-0-3",
+      "description": "Analizar implementación real de endpoints en backend",
+      "status": "completed",
+      "files": [
+        {
+          "path": "@backend/src/routes/positionRoutes.ts",
+          "action": "analyze",
+          "reason": "Verificar rutas reales"
+        },
+        {
+          "path": "@backend/src/presentation/controllers/positionController.ts",
+          "action": "analyze",
+          "reason": "Verificar controladores"
+        },
+        {
+          "path": "@backend/src/application/services/positionService.ts",
+          "action": "analyze",
+          "reason": "Verificar servicios y estructura de respuesta"
+        },
+        {
+          "path": "@backend/src/routes/candidateRoutes.ts",
+          "action": "analyze",
+          "reason": "Verificar rutas de candidatos"
+        },
+        {
+          "path": "@backend/src/presentation/controllers/candidateController.ts",
+          "action": "analyze",
+          "reason": "Verificar controlador de actualización de etapa"
+        }
+      ]
+    },
+    {
+      "id": "task-0-4",
+      "description": "Comparar requirements vs api-spec vs implementación",
+      "status": "completed",
+      "deliverables": [
+        {
+          "path": "@frontend/docs/analysis/api-validation.json",
+          "description": "Documento con inconsistencias encontradas"
+        }
+      ]
+    },
+    {
+      "id": "task-0-5",
+      "description": "Actualizar @backend/api-spec.yaml",
+      "status": "completed",
+      "files": [
+        {
+          "path": "@backend/api-spec.yaml",
+          "action": "update",
+          "reason": "Reflejar comportamiento real de la API según implementación"
+        }
+      ]
+    },
+    {
+      "id": "task-0-6",
+      "description": "Crear estructura de análisis del proyecto frontend",
+      "status": "completed",
+      "deliverables": [
+        {
+          "path": "@frontend/docs/analysis/project-structure.json",
+          "description": "Estructura del proyecto analizada"
+        },
+        {
+          "path": "@frontend/docs/analysis/positions-view-analysis.json",
+          "description": "Análisis detallado de la vista positions"
+        },
+        {
+          "path": "@frontend/docs/analysis/patterns-identified.json",
+          "description": "Patrones y convenciones encontrados"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "criteria": [
+      "requirements.json completo y estructurado",
+      "Todas las inconsistencias documentadas",
+      "api-spec.yaml actualizado y válido OpenAPI 3.0",
+      "Especificación refleja implementación real"
+    ]
+  }
+}
+

@@ -208,10 +208,79 @@ paths:
                   properties:
                     fullName:
                       type: string
+                      description: Full name of the candidate
                     currentInterviewStep:
                       type: string
+                      description: Name of the current interview step
                     averageScore:
                       type: number
+                      description: Average score of the candidate
+                    id:
+                      type: integer
+                      description: ID of the candidate
+                    applicationId:
+                      type: integer
+                      description: ID of the application
+        '404':
+          description: Position not found
+        '500':
+          description: Internal server error
+  /position/{id}/interviewflow:
+    get:
+      summary: Get interview flow by position
+      description: Retrieves the interview flow information for a specific position, including position name and interview steps. Note: The response is wrapped in an interviewFlow object.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID of the position
+      responses:
+        '200':
+          description: Interview flow information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  interviewFlow:
+                    type: object
+                    description: Interview flow data (wrapped by controller)
+                    properties:
+                      positionName:
+                        type: string
+                        description: Title of the position
+                      interviewFlow:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: ID of the interview flow
+                          description:
+                            type: string
+                            description: Description of the interview flow
+                          interviewSteps:
+                            type: array
+                            description: List of interview steps ordered by orderIndex
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  description: ID of the interview step
+                                interviewFlowId:
+                                  type: integer
+                                  description: ID of the interview flow
+                                interviewTypeId:
+                                  type: integer
+                                  description: ID of the interview type
+                                name:
+                                  type: string
+                                  description: Name of the interview step
+                                orderIndex:
+                                  type: integer
+                                  description: Order index of the step
         '404':
           description: Position not found
         '500':
