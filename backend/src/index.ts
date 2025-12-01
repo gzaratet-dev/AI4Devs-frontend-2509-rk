@@ -31,9 +31,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware para permitir CORS desde http://localhost:3000
+// Middleware para permitir CORS
+const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: corsOrigin,
   credentials: true
 }));
 
@@ -51,7 +52,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const port = 3010;
+const port = process.env.PORT || 3010;
 
 app.get('/', (req, res) => {
   res.send('Hola LTI!');
