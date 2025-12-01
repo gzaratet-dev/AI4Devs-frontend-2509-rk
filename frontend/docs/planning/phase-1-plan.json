@@ -1,0 +1,87 @@
+{
+  "createdAt": "2024-12-19T00:00:00.000Z",
+  "phase": {
+    "id": "phase-1",
+    "name": "Encabezado de la posición",
+    "status": "completed"
+  },
+  "tasks": [
+    {
+      "id": "task-1-1",
+      "description": "Crear componente PositionHeader",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/PositionHeader.tsx",
+          "action": "create",
+          "reason": "Componente para mostrar título y botón de retorno"
+        }
+      ],
+      "mockData": {
+        "required": true,
+        "structure": {
+          "positionName": "string - Título de la posición"
+        }
+      }
+    },
+    {
+      "id": "task-1-2",
+      "description": "Configurar ruta /position/:id en App.js",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/App.js",
+          "action": "modify",
+          "reason": "Añadir ruta para la vista de detalle de posición"
+        }
+      ]
+    },
+    {
+      "id": "task-1-3",
+      "description": "Crear componente PositionDetail como contenedor principal",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/PositionDetail.tsx",
+          "action": "create",
+          "reason": "Componente principal de la vista de detalle que incluirá header y kanban"
+        }
+      ]
+    },
+    {
+      "id": "task-1-4",
+      "description": "Integrar PositionHeader en PositionDetail",
+      "status": "completed",
+      "files": [
+        {
+          "path": "src/components/PositionDetail.tsx",
+          "action": "modify",
+          "reason": "Incluir PositionHeader en el layout"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "criteria": [
+      "¿Es visualizable?",
+      "¿El botón de retorno navega correctamente?",
+      "¿El título se muestra correctamente?",
+      "¿Sigue el patrón de Positions.tsx?"
+    ],
+    "checklist": [
+      {
+        "item": "¿Es visualizable?",
+        "status": "pass"
+      },
+      {
+        "item": "¿Navegación funciona?",
+        "status": "pass"
+      },
+      {
+        "item": "¿Sigue patrones existentes?",
+        "status": "pass"
+      }
+    ]
+  }
+}
+
