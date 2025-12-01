@@ -76,6 +76,28 @@
       ],
       "estimatedComplexity": "medium",
       "dependencies": ["phase-2"]
+    },
+    {
+      "id": "v2",
+      "name": "Integración con API Real y Drag-and-Drop",
+      "status": "pending",
+      "objectives": [
+        "Integrar servicios para obtener datos desde API real",
+        "Reemplazar datos mockeados con llamadas a API",
+        "Implementar drag-and-drop para mover candidatos",
+        "Actualizar etapa del candidato al mover",
+        "Manejar estados de carga y errores",
+        "Añadir feedback visual durante operaciones"
+      ],
+      "deliverables": [
+        "Servicios de API (positionService, candidateService actualizado)",
+        "PositionDetail con integración de API",
+        "KanbanBoard con drag-and-drop funcional",
+        "Manejo de errores y estados de carga",
+        "Feedback visual durante drag-and-drop"
+      ],
+      "estimatedComplexity": "high",
+      "dependencies": ["phase-3"]
     }
   ],
   "technicalStack": {
@@ -83,13 +105,20 @@
     "libraries": [
       "react-router-dom",
       "react-bootstrap",
-      "bootstrap"
+      "bootstrap",
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "axios"
     ],
     "patterns": [
       "Componentes funcionales",
       "TypeScript para nuevos componentes",
       "React Bootstrap para UI",
-      "Datos mockeados inicialmente"
+      "Service layer pattern",
+      "Optimistic updates",
+      "Error handling con rollback",
+      "React hooks (useState, useEffect)"
     ]
   }
 }

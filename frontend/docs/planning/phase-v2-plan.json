@@ -1,0 +1,286 @@
+{
+  "createdAt": "2024-12-19T00:00:00.000Z",
+  "phase": {
+    "id": "v2",
+    "name": "Integración con API Real y Drag-and-Drop",
+    "status": "pending"
+  },
+  "tasks": [
+    {
+      "id": "task-v2-1",
+      "description": "Crear servicio para obtener interviewFlow de una posición",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/services/positionService.js",
+          "action": "create",
+          "reason": "Servicio para llamar al endpoint GET /position/:id/interviewflow"
+        }
+      ],
+      "apiEndpoint": {
+        "method": "GET",
+        "path": "/position/:id/interviewflow",
+        "responseStructure": {
+          "interviewFlow": {
+            "positionName": "string",
+            "interviewFlow": {
+              "id": "number",
+              "description": "string",
+              "interviewSteps": "array"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "task-v2-2",
+      "description": "Crear servicio para obtener candidatos de una posición",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/services/positionService.js",
+          "action": "modify",
+          "reason": "Añadir función para llamar al endpoint GET /position/:id/candidates"
+        }
+      ],
+      "apiEndpoint": {
+        "method": "GET",
+        "path": "/position/:id/candidates",
+        "responseStructure": "array de candidatos con fullName, currentInterviewStep, averageScore, id, applicationId"
+      }
+    },
+    {
+      "id": "task-v2-3",
+      "description": "Crear servicio para actualizar etapa del candidato",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/services/candidateService.js",
+          "action": "modify",
+          "reason": "Añadir función para llamar al endpoint PUT /candidates/:id"
+        }
+      ],
+      "apiEndpoint": {
+        "method": "PUT",
+        "path": "/candidates/:id",
+        "requestBody": {
+          "applicationId": "number",
+          "currentInterviewStep": "number"
+        }
+      }
+    },
+    {
+      "id": "task-v2-4",
+      "description": "Integrar servicios en PositionDetail y reemplazar datos mockeados",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/components/PositionDetail.tsx",
+          "action": "modify",
+          "reason": "Usar useEffect y useState para cargar datos desde API, manejar estados de loading y error"
+        }
+      ],
+      "requirements": [
+        "Usar React hooks (useState, useEffect)",
+        "Manejar estado de carga (loading)",
+        "Manejar errores de API",
+        "Cargar datos cuando cambia el id de la posición"
+      ]
+    },
+    {
+      "id": "task-v2-5",
+      "description": "Instalar librería de drag-and-drop",
+      "status": "pending",
+      "dependencies": [],
+      "packages": [
+        {
+          "name": "@dnd-kit/core",
+          "version": "^6.0.0",
+          "reason": "Librería moderna y accesible para drag-and-drop en React"
+        },
+        {
+          "name": "@dnd-kit/sortable",
+          "version": "^7.0.0",
+          "reason": "Utilidades para elementos ordenables"
+        },
+        {
+          "name": "@dnd-kit/utilities",
+          "version": "^3.2.0",
+          "reason": "Utilidades auxiliares"
+        }
+      ]
+    },
+    {
+      "id": "task-v2-6",
+      "description": "Implementar drag-and-drop en KanbanBoard",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/components/KanbanBoard.tsx",
+          "action": "modify",
+          "reason": "Añadir DndContext y funcionalidad de drag-and-drop para mover candidatos entre columnas"
+        }
+      ],
+      "requirements": [
+        "Usar DndContext de @dnd-kit/core",
+        "Implementar onDragEnd para manejar el movimiento",
+        "Validar que el movimiento sea válido (entre columnas diferentes)",
+        "Actualizar estado local optimísticamente"
+      ]
+    },
+    {
+      "id": "task-v2-7",
+      "description": "Hacer CandidateCard arrastrable",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/components/CandidateCard.tsx",
+          "action": "modify",
+          "reason": "Usar useDraggable de @dnd-kit/core para hacer la tarjeta arrastrable"
+        }
+      ],
+      "requirements": [
+        "Añadir atributos de drag (data-id, data-applicationId, etc.)",
+        "Aplicar estilos visuales durante el arrastre",
+        "Mantener la funcionalidad existente"
+      ]
+    },
+    {
+      "id": "task-v2-8",
+      "description": "Hacer KanbanColumn soltable (drop zone)",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/components/KanbanColumn.tsx",
+          "action": "modify",
+          "reason": "Usar useDroppable de @dnd-kit/core para permitir soltar candidatos en la columna"
+        }
+      ],
+      "requirements": [
+        "Añadir atributos de drop zone",
+        "Aplicar estilos visuales cuando se arrastra sobre la columna",
+        "Validar que el candidato pueda soltarse en esa columna"
+      ]
+    },
+    {
+      "id": "task-v2-9",
+      "description": "Integrar actualización de etapa al mover candidato",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/components/KanbanBoard.tsx",
+          "action": "modify",
+          "reason": "Llamar al servicio de actualización cuando se mueve un candidato, manejar errores y rollback"
+        }
+      ],
+      "requirements": [
+        "Llamar a updateCandidateStage después de mover",
+        "Implementar optimistic update",
+        "Hacer rollback si la actualización falla",
+        "Mostrar feedback al usuario (éxito/error)"
+      ]
+    },
+    {
+      "id": "task-v2-10",
+      "description": "Añadir indicadores visuales de carga y error",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/components/PositionDetail.tsx",
+          "action": "modify",
+          "reason": "Mostrar spinner durante carga y mensaje de error si falla"
+        }
+      ],
+      "requirements": [
+        "Mostrar spinner o skeleton mientras cargan los datos",
+        "Mostrar mensaje de error si falla la carga",
+        "Manejar estado vacío (sin candidatos)"
+      ]
+    },
+    {
+      "id": "task-v2-11",
+      "description": "Añadir feedback visual durante drag-and-drop",
+      "status": "pending",
+      "files": [
+        {
+          "path": "src/components/KanbanColumn.tsx",
+          "action": "modify",
+          "reason": "Añadir estilos visuales cuando se arrastra sobre la columna"
+        },
+        {
+          "path": "src/components/CandidateCard.tsx",
+          "action": "modify",
+          "reason": "Añadir estilos visuales durante el arrastre"
+        }
+      ],
+      "requirements": [
+        "Resaltar columna cuando se arrastra sobre ella",
+        "Mostrar opacidad o transformación en la tarjeta arrastrada",
+        "Indicar visualmente zonas válidas e inválidas"
+      ]
+    }
+  ],
+  "validation": {
+    "criteria": [
+      "¿Los datos se cargan desde la API real?",
+      "¿El drag-and-drop funciona correctamente?",
+      "¿Se actualiza la etapa del candidato al mover?",
+      "¿Se manejan errores correctamente?",
+      "¿Hay feedback visual durante las operaciones?",
+      "¿Se mantiene la funcionalidad responsive?",
+      "¿Los estados de carga se muestran correctamente?"
+    ],
+    "checklist": [
+      {
+        "item": "¿Los datos se cargan desde la API?",
+        "status": "pending"
+      },
+      {
+        "item": "¿El drag-and-drop funciona?",
+        "status": "pending"
+      },
+      {
+        "item": "¿Se actualiza la etapa al mover?",
+        "status": "pending"
+      },
+      {
+        "item": "¿Se manejan errores?",
+        "status": "pending"
+      },
+      {
+        "item": "¿Hay feedback visual?",
+        "status": "pending"
+      },
+      {
+        "item": "¿Es responsive?",
+        "status": "pending"
+      }
+    ]
+  },
+  "technicalStack": {
+    "libraries": [
+      "@dnd-kit/core",
+      "@dnd-kit/sortable",
+      "@dnd-kit/utilities",
+      "axios (ya instalado)",
+      "react-bootstrap (ya instalado)"
+    ],
+    "patterns": [
+      "Optimistic updates",
+      "Error handling con rollback",
+      "React hooks (useState, useEffect)",
+      "Service layer pattern"
+    ]
+  },
+  "dependencies": [
+    "phase-3 (Tarjetas de Candidatos) - completada"
+  ],
+  "estimatedComplexity": "high",
+  "notes": [
+    "La respuesta de /position/:id/interviewflow está envuelta en { interviewFlow: {...} }",
+    "El endpoint para actualizar es PUT /candidates/:id (no /candidates/:id/stage)",
+    "currentInterviewStep en el request debe ser el ID numérico del interview step, no el nombre",
+    "Se requiere mapear el nombre del step al ID para la actualización"
+  ]
+}
+
